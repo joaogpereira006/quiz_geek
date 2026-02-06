@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Que Personagem Você É?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>QUE PERSONAGEM VOCÊ É?</h1>
+
+        <div id="secao-cadastro">
+            <h2 class="subtitulo">IDENTIFIQUE-SE, HERÓI!</h2>
+            <form id="form-cadastro">
+                <input type="text" id="nome" placeholder="Seu Nome" required>
+                <input type="number" id="idade" placeholder="Sua Idade" required>
+                <select id="genero">
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                    <option value="Não-binário">Não-binário</option>
+                </select>
+                <button type="submit" class="btn-main">INICIAR MISSÃO!</button>
+            </form>
+        </div>
+
+        <div id="secao-quiz" style="display: none;">
+            <div class="quiz-header">
+                PERGUNTA <span id="num-pergunta">1</span> DE 5
+            </div>
+            <p id="pergunta-texto"></p>
+            <div id="opcoes-quiz"></div>
+        </div>
+
+        <div id="secao-resultado" style="display: none;">
+            </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
