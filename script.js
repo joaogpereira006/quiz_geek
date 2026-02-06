@@ -58,7 +58,7 @@ function showQuestion() {
     const textoPergunta = document.getElementById('pergunta-texto');
     const numDisplay = document.getElementById('num-pergunta');
 
-    // Perguntas 1 a 4
+   
     if (currentQ < questions.length) {
         numDisplay.innerText = currentQ + 1;
         const q = questions[currentQ];
@@ -69,7 +69,7 @@ function showQuestion() {
         });
         quizContainer.innerHTML = html;
     } 
-    // Pergunta 5 (Lemas)
+   
     else if (currentQ === questions.length) {
         numDisplay.innerText = 5;
         textoPergunta.innerText = "Escolha o lema que define sua jornada:";
@@ -81,7 +81,7 @@ function showQuestion() {
         });
         quizContainer.innerHTML = html;
     } 
-    // Tela de Revelação
+
     else {
         document.querySelector('.quiz-header').style.display = 'none';
         textoPergunta.innerText = "Análise de perfil concluída!";
@@ -101,7 +101,7 @@ function calcResult() {
     const listaFinal = banco[gen][winner];
     const charName = listaFinal[Math.floor(Math.random() * listaFinal.length)];
 
-    // Caminho da sua pasta local de fotos
+   
     const charImgUrl = `fotos/${charName}.jpg`;
 
     document.getElementById('secao-quiz').style.display = 'none';
@@ -126,7 +126,7 @@ function calcResult() {
 async function saveAndFinish(char) {
     const feedbackText = document.getElementById('feedback').value;
     
-    // Objeto com nomes exatos para o MySQL
+    
     const dadosParaSalvar = {
         nome: user.nome,
         idade: user.idade,
