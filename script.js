@@ -136,7 +136,7 @@ async function saveAndFinish(char) {
     };
 
     try {
-        const response = await fetch('http://localhost:3000/salvar', {
+        const response = await fetch('https://quizgeek-production.up.railway.app/salvar', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(dadosParaSalvar)
