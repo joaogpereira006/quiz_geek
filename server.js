@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 
 const db = mysql.createConnection({
 
-    host: process.env.MYSQLHOST || 'mysql.railway.internal', 
+    host: 'mysql.railway.internal', 
     user: process.env.MYSQLUSER || 'root',
     password: process.env.MYSQLPASSWORD || '', 
     database: process.env.MYSQLDATABASE || 'railway',
