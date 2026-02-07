@@ -1,21 +1,21 @@
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
-const bodyParser = require('body-parser');
-
 const app = express();
+
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
 const db = mysql.createConnection({
-    host: process.env.MYSQLHOST || 'mysql.railway.internal', 
-    user: process.env.MYSQLUSER || 'root',
+   
+    host: 'mysql.railway.internal', 
+    user: 'root',
     password: process.env.MYSQLPASSWORD, 
-    database: process.env.MYSQLDATABASE || 'railway',
-    port: process.env.MYSQLPORT || 3306
+    database: 'railway',
+    port: 3306
 });
 
-db.connect(err => {
+db.connect((err) => {
     if (err) {
         console.error('ERRO AO CONECTAR NO BANCO:', err);
     } else {
@@ -23,28 +23,26 @@ db.connect(err => {
     }
 });
 
-// Rota de teste para ver se o link abre no navegador
 app.get('/', (req, res) => {
-    res.send("Servidor do Quiz Geek está online e pronto!");
+    res.send('Servidor do Quiz Geek está online e pronto!');
 });
 
 app.post('/salvar', (req, res) => {
-    const { nome, idade, genero, personagem, feedback } = req.body;
+    
+    const { nome, idade, genero, resultado_personagem, feedback } = req.body;
+    
     const sql = "INSERT INTO cadastros (nome, idade, genero, resultado_personagem, feedback) VALUES (?, ?, ?, ?, ?)";
-    db.query(sql, [nome, idade, genero, personagem, feedback], (err, result) => {
+    
+    db.query(sql, [nome, idade, genero, resultado_personagem, feedback], (err, result) => {
         if (err) {
-            console.error("ERRO AO INSERIR NO BANCO:", err);
-            res.status(500).send("Erro ao salvar dados");
-        } else {
-            console.log("SUCESSO: Novo registro inserido!");
-            res.status(200).send("Salvo com sucesso");
+            console.error("ERRO AO SALVAR NO BANCO:", err);
+            return res.status(500).json({ error: err.message });
         }
+        res.status(200).json({ message: "Dados salvos com sucesso!" });
     });
 });
 
-// CONFIGURAÇÃO CRÍTICA PARA O RAILWAY
-const PORT = process.env.PORT || 3000;
-// Usar "0.0.0.0" permite que o Railway encontre seu servidor
-app.listen(PORT, "0.0.0.0", () => {
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`SERVIDOR RODANDO NA PORTA ${PORT}`);
 });
