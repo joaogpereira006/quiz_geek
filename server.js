@@ -7,12 +7,12 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// Conexão com o Banco de Dados
 const db = mysql.createConnection({
-    host: process.env.MYSQLHOST || 'localhost',
+
+    host: process.env.MYSQLHOST || 'mysql.railway.internal', 
     user: process.env.MYSQLUSER || 'root',
     password: process.env.MYSQLPASSWORD || '', 
-    database: process.env.MYSQLDATABASE || 'railway', // Ajustado para railway
+    database: process.env.MYSQLDATABASE || 'railway',
     port: process.env.MYSQLPORT || 3306
 });
 
