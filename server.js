@@ -8,7 +8,7 @@ app.use(express.json());
 
 const db = mysql.createConnection({
    
-    host: 'mysql.railway.internal', 
+    host: 'MySQL.railway.internal', 
     user: 'root',
     password: process.env.MYSQLPASSWORD, 
     database: 'railway',
