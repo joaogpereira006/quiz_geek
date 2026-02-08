@@ -7,12 +7,11 @@ app.use(cors());
 app.use(express.json());
 
 const db = mysql.createConnection({
-   
-    host: 'MySQL.railway.internal', 
-    user: 'root',
-    password: process.env.MYSQLPASSWORD, 
-    database: 'railway',
-    port: 3306
+    host: process.env.MYSQLHOST,
+    user: process.env.MYSQLUSER,
+    password: process.env.MYSQLPASSWORD,
+    database: process.env.MYSQLDATABASE,
+    port: process.env.MYSQLPORT || 3306
 });
 
 db.connect((err) => {
