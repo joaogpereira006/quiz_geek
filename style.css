@@ -8,20 +8,53 @@ body {
     background-size: 20px 20px;
     font-family: 'Segoe UI', sans-serif;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column; /* Alinha letreiro e quiz em coluna */
+    align-items: center;    /* Centraliza o quiz horizontalmente */
     min-height: 100vh;
-    padding: 20px;
+    margin: 0;
+}
+
+/* Letreiro corrigido para o topo */
+.marquee-container {
+    width: 100%;
+    background-color: #000;
+    color: #FFD700;
+    overflow: hidden;
+    padding: 10px 0;
+    font-family: 'Bangers', cursive;
+    border-bottom: 3px solid #FFD700;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    position: fixed; /* Fixa no topo da tela */
+    top: 0;
+    z-index: 1000;
+}
+
+.marquee-content {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee 20s linear infinite;
+}
+
+.marquee-content span {
+    padding-right: 50px;
+}
+
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
 }
 
 .container {
     background: white;
     border: 5px solid black;
-    box-shadow: 15px 15px 0px black; /* Sombra sólida preta */
+    box-shadow: 15px 15px 0px black;
     padding: 30px;
     width: 100%;
     max-width: 500px;
     text-align: center;
+    margin: 80px 20px 20px 20px; /* Margem no topo para não ficar sob o letreiro */
 }
 
 h1 {
@@ -30,7 +63,7 @@ h1 {
     color: black;
     text-shadow: 3px 3px 0px white, 6px 6px 0px black;
     margin-bottom: 20px;
-    transform: rotate(-2deg); /* Inclinação estilo HQ */
+    transform: rotate(-2deg);
 }
 
 .subtitulo { font-family: 'Bangers', cursive; margin-bottom: 15px; font-size: 1.5rem; }
@@ -52,7 +85,7 @@ input, select, textarea {
     font-size: 1.6rem;
     cursor: pointer;
     border: 3px solid black;
-    background: #ff0000; /* Botão Vermelho */
+    background: #ff0000;
     color: white;
     box-shadow: 5px 5px 0px black;
     transition: 0.2s;
