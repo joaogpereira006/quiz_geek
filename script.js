@@ -58,7 +58,7 @@ function exibirResultado() {
     let heroi = listaPersonagens[indice];
 
     document.getElementById('nome-personagem').innerText = heroi;
-    document.getElementById('imagem-personagem').src = `fotos/${heroi}.jpg`; // Busca na pasta fotos/
+    document.getElementById('imagem-personagem').src = `fotos/${heroi}.jpg`; 
 
     document.getElementById('btn-concluir').onclick = async () => {
         const payload = {
@@ -75,7 +75,12 @@ function exibirResultado() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             });
-            if (res.ok) alert("MISSÃO CUMPRIDA! DADOS SALVOS.");
-        } catch (err) { alert("ERRO AO SALVAR."); }
+            if (res.ok) {
+                alert("MISSÃO CUMPRIDA! DADOS SALVOS.");
+                location.reload(); 
+            }
+        } catch (err) { 
+            alert("ERRO AO SALVAR."); 
+        }
     };
 }
